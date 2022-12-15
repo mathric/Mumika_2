@@ -109,6 +109,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+env.json
 
 # Spyder project settings
 .spyderproject
@@ -127,3 +128,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# dev environment
+.vscode/
+
+# mac
+.DS_Store
