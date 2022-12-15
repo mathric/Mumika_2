@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mumika</title>
+        {% load static %}
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'img_management/css/main.css' %}" rel="stylesheet">
+        <link href="{% static 'pretty_checkbox/cpretty-checkbox.min.css' %}" rel="stylesheet">
+    </head>
+
+    <body style="background: white;" id="main-content">
+
+        <div class="container-fluid" id="top-container">
+            
+            <div class="row">
+                <h1 id="title" class="offset-sm-1">Mumika</h1>
+                
+                <div id="tag-container" class="form-check offset-sm-1"></div>
+            </div>
+
+            <div class="row">
+                <input type="search" class="offset-sm-1" id="search-text" placeholder="Search..." />
+                <button id="search-btn" class="search-bar btn btn-info">搜尋</button>
+                <div id="current-search-text"></div>
+                <button id="view-all-btn" type="button" class="search-bar btn btn-info">全部一覽</button>
+                <button id="random-search-btn" type="button" class="search-bar btn btn-info">隨機排序</button>
+
+                <!-- sort dropdownlist -->
+                <div class="btn-group search-bar">
+                    <div class="badge badge-info">
+                        <div id="selected-sortProp" class="align-middle">Sort By: </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div id="sortProp-dropdown-menu" class="dropdown-menu"></div>
+                </div>
+
+                <button type="button" id="asc-desc-sort-btn" class="search-bar btn btn-info">Order:Asc</button>
+            </div>
+        
+
+        </div>
+
+        <div class="container-fluid" id="item-container"></div>
+        <span id="pageLink"></span>
+    </body>
+
+</html>

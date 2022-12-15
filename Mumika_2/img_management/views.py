@@ -5,4 +5,5 @@ from django.http import JsonResponse
 
 # Create your views here.
 def test_view(request):
-    return JsonResponse({'test': 'test'})
+    return render(request, 'homepage.html', {})
+    # return JsonResponse({'test': 'test'})
