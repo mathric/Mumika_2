@@ -1,6 +1,5 @@
 from django.urls import include, path
-from .views import test_view
+from .views import ImgMainView
 
 urlpatterns = [
-    path('test/', test_view, name='main-view'),
 ]

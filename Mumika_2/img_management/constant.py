@@ -1,0 +1,1 @@
+PAGE_IMG_LIMIT = 15
