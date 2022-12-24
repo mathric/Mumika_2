@@ -11,6 +11,7 @@ import glob
 from pathlib import Path
 import json
 import logging
+from logging import getLogger
 
 def get_page_images(target_queryset, page_number=1):
     if page_number < 1:
@@ -86,6 +87,7 @@ def import_img_info_api(request):
 
 def import_img_info(json_path=None):
     json_data = {}
+    logger = getLogger('app')
     if json_path:
         try:
             with open(json_path) as f:
@@ -105,15 +107,22 @@ def import_img_info(json_path=None):
                 except ImageInfo.DoesNotExist:
                     continue
                 except ImageInfo.MultipleObjectsReturned:
-                    logging.warning(f'filename {file_name} has multiple objects')
+                    logger.warning(f'filename {file_name} has multiple objects')
                     continue
                 else:
                     img_ref.artwork_name = item.get('name', '')
                     img_ref.save()
                 
                 #TODO save tag relationship
+                tag_list = []
                 for tag_name in item.get('tag', []):
-                    ...
+                    try:
+                        tag_list.append(Tag.objects.get(name=tag_name))
+                    except Tag.DoesNotExist:
+                        logger.error(f'tag {tag_name} not found')
+                        continue
+                    #Todo can add cache to improve performance
+                img_ref.tags.add(*tag_list)
     return {'status': 'success'}
 
 
